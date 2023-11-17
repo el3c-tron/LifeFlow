@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+		<title>LifeFlow</title>
+
+		<!-- Compiled latest Css -->
+		<link rel="stylesheet" href="materialize.min.css" />
+
+		<link href="icon.css" rel="stylesheet" />
+
+		<link rel="stylesheet" href="style.css">
+
+	</head>
+	<body>
+		<nav class="mynav">
+			<div class="nav-wrapper container">
+				<a href="/"><img src="bbi-logo.png" alt="Universe" class="brand-logo"></a>
+				<a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+				<ul id="nav-mobile" class="right hide-on-med-and-down">
+					<li><a class="btn transparent" href="/donate">Donate</a></li>
+					<li><a class="btn transparent" href="/bank">Check Donors</a></li>
+				</ul>
+			</div>
+		</nav>
+
+		<ul class="sidenav" id="mobile-demo">
+			<li><a class="btn red" href="/donate">Donate</a></li>
+			<li><a class="btn red" href="/bank?blood=&city=&zeros=on">Search Donors</a></li>
+		</ul>
+
+
+		<!-- Crap -->
+		<div  class="center black-text" >
+			<h4>Register to continue</h4>
+		</div>
+		<div class="row container black-text" style="margin-top: 20px;">
+			<form class="col s12 l5 black-text" action="/register" method="POST" autocomplete="new-password" id="registerForm">
+				<div class="row">
+					<div class="input-field col l12 s12">
+						<!-- Name -->
+						<label class="black-text" for="">Name</label>
+						<input autocomplete="new-password" class="black-text" required placeholder="Name" id="first_name"
+							name="name" type="text" class="validate">
+					</div>
+				</div>
+
+				<div class="row" style:"color:black">
+					<div class="col s12 m4 l4">
+						<label class="black-text" for="blood" >Blood Group</label>
+						<select name="blood" id="blood" class="validate" required>
+							<option value="">Select</option>
+							<option value="A">A</option>
+							<option value="B">B</option>
+							<option value="O">O</option>
+							<option value="AB">AB</option>
+						</select>
+					</div>
+					<div class="col s12 m8 l8">
+						<label class="black-text" for="rh">Rh Factor</label>
+						<p class=" black-text">
+							<label>
+								<input class="with-gap black-text white" value="+" name="rh" type="radio" required />
+								<span class="black-text">Positive</span>
+							</label>
+							<label>
+								<input class="with-gap black-text white" value="-" name="rh" type="radio" required />
+								<span class="black-text">Negative</span>
+							</label>
+						</p>
+					</div>
+				</div>
+
+				<div class="row">
+					<div class="input-field col s12 l12">
+						<!-- Phone -->
+						<label class="black-text">Phone</label>
+						<input autocomplete="new-password" class="black-text" required placeholder="Contact Number" id="phone"
+							name="phone" type="text" pattern="[789][0-9]{9}" class="validate">
+					</div>
+				</div>
+
+				<div class="row">
+					<div class="col s12 l12">
+						<!-- City -->
+						<label class="black-text" for="city">City</label>
+						<select name="city" id="city" class="validate" required>
+							<option value="">Select</option>
+						</select>
+					</div>
+				</div>
+
+				<div class="row" id="final">
+					<div class="input-field col s12 l12 m12">
+						<textarea autocomplete="new-password" maxlength="80" id="address" placeholder="Enter your Address"
+							name="address" class="materialize-textarea black-text validate" required></textarea>
+						<label for="address" class="black-text">Address</label>
+					</div>
+				</div>
+
+				<!------------------------------------------------------------>
+
+				<div class="row" id="final">
+					<div class="input-field col s12 l12 m12">
+						<textarea autocomplete="new-password" maxlength="80" id="email" placeholder="Enter your Email"
+							name="email" class="materialize-textarea black-text validate" required></textarea>
+						<label for="email" class="black-text">Email</label>
+					</div>
+				</div>
+
+
+				<button class="btn waves-effect waves-light red lighten-1" onclick="generateOTP()">Get OTP
+					<i class="material-icons right"></i>
+				</button>
+
+
+
+
+
+				<div class="row" id="final">
+					<div class="input-field col s12 l12 m12">
+						<textarea autocomplete="new-password" maxlength="80" id="otp" placeholder="OTP(sent to your email)" name="otp"
+							class="materialize-textarea black-text validate" required></textarea>
+						<label for="otp" class="black-text">OTP</label>
+					</div>
+				</div>
+
+
+
+
+
+
+
+				<input id="lat" type="hidden" name="latitude">
+				<input id="lon" type="hidden" name="longitude">
+
+				<!-- <button class="btn waves-effect waves-light red lighten-1" onclick="verifyOTP()">Verify
+					<i class="material-icons right"></i>
+				</button> -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+				<div class="center">
+					<label class="black-text">
+						<input type="checkbox"  required />
+						<span class="black-text">I confirm that I am atleast 18 years old.</span><br>
+					</label>
+					<button class="btn waves-effect waves-light red lighten-1" type="submit" id="registerButton" onclick="verifyOTP()">Register
+						<i class="material-icons right">send</i>
+					</button>
+					<button class="btn waves-effect waves-light red lighten-1" type="reset">Reset
+						<i class="material-icons right">delete</i>
+					</button>
+				</div>
+			</form>
+			<div class="col l6 hide-on-med-and-down offset-l1 center">
+				<img src="donate.jpg" alt="Donate" class="center">
+			</div>
+		</div>
+		<!--Import Font Awesome-->
+		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
+			integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+		</link>
+		<!-- Footer -->
+		<footer class="page-footer">
+			<div class="container">
+				<div class="row">
+					<div class="col s12 m8 l9">
+						<h5 class="white-text">About us!</h5>
+						<p class="grey-text text-lighten-4">Aniket Kumar , Anurag Chauhan , Sahil Kushwaha , Sarfraj Ansari</p>
+					</div>
+					<div class="col s12 m4 l3">
+						<h5 class="black-text">Contact</h5>
+						<ul>
+							<li><i class="fab fa-facebook"></i><a class="grey-text text-lighten-4"
+									href="#"> Facebook</a></li>
+							<li><i class="fab fa-instagram"></i><a class="grey-text text-lighten-4"
+									href="#"> Instagram</a></li>
+							<li><i class="fab fa-github"></i><a class="grey-text text-lighten-4" href="#">
+									Github</a></li>
+							<li><i class="fab fa-whatsapp"></i><a class="grey-text text-lighten-4" href="#"> Whatsapp</a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+			<div class="footer-copyright">
+				
+			</div>
+		</footer>
+
+		<script src="jquery.min.js"></script>
+		<script src="materialize.min.js"></script>
+		<script src="register_script.js"></script>
+	</body>
+
+</html>
